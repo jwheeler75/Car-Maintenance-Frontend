@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Link, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import CarDetail from "./CarDetail.js";
 import "./App.css";
 import Axios from "axios";
@@ -37,59 +37,67 @@ class App extends Component {
     });
   };
 
+  deleteCar(e) {
+    console.log(e.target);
+    Axios.delete(`${backendURL}/cars/${e.target.id.value}`).then((response) => {
+      // this.getCars();
+      console.log(response);
+    });
+  }
+
   changeLastOilMileage = (e) => {
     e.preventDefault();
-    console.log(e.target.lastOilChangeMileage.value);
-    Axios.post(`${backendURL}/cars`, {
-      lastOilChangeMileage: e.target.lastOilChangeMileage.value,
+    Axios.put(`${backendURL}/cars/${e.target.carid.value}`, {
+      lastOilChangeMileage: e.target.changeLastOilMileage.value,
     }).then((response) => {
       let tempArray = this.state.cars;
       tempArray.push(response.data.cars);
       this.setState({
         cars: tempArray,
       });
+      this.getCars();
     });
   };
 
   changeNextOilMileage = (e) => {
     e.preventDefault();
-    console.log(e.target.nextOilChangeMileage.value);
-    Axios.post(`${backendURL}/cars`, {
-      nextOilChangeMileage: e.target.nextOilChangeMileage.value,
+    Axios.put(`${backendURL}/cars/${e.target.carid.value}`, {
+      nextOilChangeMileage: e.target.changeNextOilMileage.value,
     }).then((response) => {
       let tempArray = this.state.cars;
       tempArray.push(response.data.cars);
       this.setState({
         cars: tempArray,
       });
+      this.getCars();
     });
   };
 
   changeLastRotation = (e) => {
     e.preventDefault();
-    console.log(e.target.lastTireRotationMileage.value);
-    Axios.post(`${backendURL}/cars`, {
-      lastTireRotationMileage: e.target.lastTireRotationMileage.value,
+    Axios.put(`${backendURL}/cars/${e.target.carid.value}`, {
+      lastTireRotationMileage: e.target.changeLastRotation.value,
     }).then((response) => {
       let tempArray = this.state.cars;
       tempArray.push(response.data.cars);
       this.setState({
         cars: tempArray,
       });
+      this.getCars();
     });
   };
 
   changeNextRotation = (e) => {
     e.preventDefault();
-    console.log(e.target.nextTireRotationMileage.value);
-    Axios.post(`${backendURL}/cars`, {
-      nextTireRotationMileage: e.target.lastTireRotationMileage.value,
+    Axios.put(`${backendURL}/cars/${e.target.carid.value}`, {
+      nextTireRotationMileage: e.target.changeNextRotation.value,
     }).then((response) => {
       let tempArray = this.state.cars;
       tempArray.push(response.data.cars);
       this.setState({
         cars: tempArray,
       });
+      this.getCars();
     });
   };
 
@@ -97,7 +105,7 @@ class App extends Component {
     console.log(this.state);
     return (
       <div className="App">
-        Welcome to the Car Maintenance App!
+        <h1>Welcome to the Car Maintenance App!</h1>
         <nav></nav>
         <main>
           <Switch>
@@ -105,7 +113,11 @@ class App extends Component {
               exact
               path="/"
               component={() => (
-                <AllCars cars={this.state.cars} addCar={this.addCar} />
+                <AllCars
+                  cars={this.state.cars}
+                  addCar={this.addCar}
+                  deleteCar={this.deleteCar}
+                />
               )}
             />
             <Route
