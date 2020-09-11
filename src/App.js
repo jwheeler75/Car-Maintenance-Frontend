@@ -15,6 +15,10 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.getCars();
+  }
+
+  getCars() {
     Axios.get(`${backendURL}/cars`).then((response) => {
       this.setState({
         cars: response.data.cars,
@@ -23,11 +27,63 @@ class App extends Component {
     });
   }
 
-  addCar = (e) => {
+  addCar = async (e) => {
     e.preventDefault();
     console.log(e.target.vehicle.value);
-    Axios.post(`${backendURL}/cars`, {
+    await Axios.post(`${backendURL}/cars`, {
       vehicle: e.target.vehicle.value,
+    }).then((response) => {
+      this.getCars();
+    });
+  };
+
+  changeLastOilMileage = (e) => {
+    e.preventDefault();
+    console.log(e.target.lastOilChangeMileage.value);
+    Axios.post(`${backendURL}/cars`, {
+      lastOilChangeMileage: e.target.lastOilChangeMileage.value,
+    }).then((response) => {
+      let tempArray = this.state.cars;
+      tempArray.push(response.data.cars);
+      this.setState({
+        cars: tempArray,
+      });
+    });
+  };
+
+  changeNextOilMileage = (e) => {
+    e.preventDefault();
+    console.log(e.target.nextOilChangeMileage.value);
+    Axios.post(`${backendURL}/cars`, {
+      nextOilChangeMileage: e.target.nextOilChangeMileage.value,
+    }).then((response) => {
+      let tempArray = this.state.cars;
+      tempArray.push(response.data.cars);
+      this.setState({
+        cars: tempArray,
+      });
+    });
+  };
+
+  changeLastRotation = (e) => {
+    e.preventDefault();
+    console.log(e.target.lastTireRotationMileage.value);
+    Axios.post(`${backendURL}/cars`, {
+      lastTireRotationMileage: e.target.lastTireRotationMileage.value,
+    }).then((response) => {
+      let tempArray = this.state.cars;
+      tempArray.push(response.data.cars);
+      this.setState({
+        cars: tempArray,
+      });
+    });
+  };
+
+  changeNextRotation = (e) => {
+    e.preventDefault();
+    console.log(e.target.nextTireRotationMileage.value);
+    Axios.post(`${backendURL}/cars`, {
+      nextTireRotationMileage: e.target.lastTireRotationMileage.value,
     }).then((response) => {
       let tempArray = this.state.cars;
       tempArray.push(response.data.cars);
@@ -59,6 +115,10 @@ class App extends Component {
                   {...routerProps}
                   cars={this.state.cars}
                   addCar={this.addCar}
+                  changeLastOilMileage={this.changeLastOilMileage}
+                  changeNextOilMileage={this.changeNextOilMileage}
+                  changeLastRotation={this.changeLastRotation}
+                  changeNextRotation={this.changeNextRotation}
                 />
               )}
             />
