@@ -10,9 +10,7 @@ class CarDetail extends Component {
       <div className="App">
         <Link to="/">Back to Homepage</Link>
         <h3> {CarDetails.vehicle} </h3>
-        <h5 key={CarDetails.id}>
-          Last Oil Change Mileage: {CarDetails.lastOilChangeMileage}
-        </h5>
+        <h5>Last Oil Change Mileage: {CarDetails.lastOilChangeMileage}</h5>
         <form onSubmit={this.props.changeLastOilMileage}>
           <input type="hidden" name="carid" value={CarDetails.id} />
           <input type="number" name="changeLastOilMileage" />
