@@ -16,11 +16,11 @@ class AllCars extends Component {
       <div>
         <h2>All Vehicles</h2>
         <h3>Create a New Vehicle</h3>
-        <form name="myForm" onSubmit={this.props.addCar}>
+        <form onSubmit={this.props.addCar}>
           <input type="text" name="vehicle" required />
           <input type="submit" value="Add Vehicle" />
         </form>
-        <ul>{allCars}</ul>
+        <ul className="grid-container">{allCars}</ul>
       </div>
     );
   }

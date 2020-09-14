@@ -4,6 +4,7 @@ import CarDetail from "./CarDetail.js";
 import "./App.css";
 import Axios from "axios";
 import AllCars from "./AllCars.js";
+
 const backendURL = process.env.BACKEND_URL || "http://localhost:3000/api";
 
 class App extends Component {
@@ -106,7 +107,6 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Welcome to the Car Maintenance App!</h1>
-        <nav></nav>
         <main>
           <Switch>
             <Route
