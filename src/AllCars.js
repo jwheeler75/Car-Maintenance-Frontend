@@ -20,6 +20,7 @@ class AllCars extends Component {
           <input type="text" name="vehicle" required />
           <input type="submit" value="Add Vehicle" />
         </form>
+        <h4>Click on a Vehicle Below to See More Details</h4>
         <ul className="grid-container">{allCars}</ul>
       </div>
     );
