@@ -18,14 +18,14 @@ class App extends Component {
     this.getCars();
   }
 
-  getCars() {
+  getCars = () => {
     Axios.get(`${backendURL}/cars`).then((response) => {
       this.setState({
         cars: response.data.cars,
       });
       console.log(response);
     });
-  }
+  };
 
   addCar = async (e) => {
     e.preventDefault();
@@ -37,13 +37,13 @@ class App extends Component {
     });
   };
 
-  deleteCar(e) {
-    console.log(e.target);
-    Axios.delete(`${backendURL}/cars/${e.target.id.value}`).then((response) => {
-      // this.getCars();
+  deleteCar = (e) => {
+    console.log(e.target.id);
+    Axios.delete(`${backendURL}/cars/${e.target.id}`).then((response) => {
       console.log(response);
+      this.getCars();
     });
-  }
+  };
 
   changeLastOilMileage = (e) => {
     e.preventDefault();
