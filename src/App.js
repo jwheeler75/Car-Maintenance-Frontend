@@ -4,7 +4,8 @@ import CarDetail from "./CarDetail.js";
 import "./App.css";
 import Axios from "axios";
 import AllCars from "./AllCars.js";
-const backendURL = process.env.BACKEND_URL || "http://localhost:3000/api";
+const backendURL =
+  process.env.REACT_APP_BACKEND_URL || "http://localhost:3000/api";
 
 class App extends Component {
   constructor(props) {
