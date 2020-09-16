@@ -21,7 +21,9 @@ https://github.com/jwheeler75/Car-Maintenance-Frontend/blob/master/planning/App%
 ## Wireframes
 
 These are the wireframes for the AllCars and CarDetail components.
+
 https://github.com/jwheeler75/Car-Maintenance-Frontend/blob/master/planning/Wireframe.png
+
 https://github.com/jwheeler75/Car-Maintenance-Frontend/blob/master/planning/Wireframe%202.png
 
 
