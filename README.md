@@ -10,8 +10,8 @@ This is a full stack Car Maintenance App Frontend is built using a React JS, Rea
 
 - GitHub Repo URL for Frontend https://github.com/jwheeler75/Car-Maintenance-Frontend
 - GitHub Repo URL for Backend https://github.com/jwheeler75/Car-Maintenance-Backend
-- Heroku Production URL for Frontend
-- Heroku Production URL for Backend
+- Heroku Production URL for Frontend https://car-maintenance-frontend.herokuapp.com/
+- Heroku Production URL for Backend https://car-maintenance-backend.herokuapp.com/
 
 ## App Screenshot
 
