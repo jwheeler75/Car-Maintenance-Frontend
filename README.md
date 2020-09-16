@@ -55,6 +55,7 @@ https://github.com/jwheeler75/Car-Maintenance-Frontend/blob/master/planning/Wire
 
 #### PostMVP
 - Implement user authentication.
+- Add Weather and Gas Price Widgets.
 
 
 
