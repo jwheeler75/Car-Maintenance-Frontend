@@ -4,7 +4,6 @@ import CarDetail from "./CarDetail.js";
 import "./App.css";
 import Axios from "axios";
 import AllCars from "./AllCars.js";
-
 const backendURL = process.env.BACKEND_URL || "http://localhost:3000/api";
 
 class App extends Component {
@@ -19,8 +18,8 @@ class App extends Component {
     this.getCars();
   }
 
-  getCars = () => {
-    Axios.get(`${backendURL}/cars`).then((response) => {
+  getCars = async () => {
+    await Axios.get(`${backendURL}/cars`).then((response) => {
       this.setState({
         cars: response.data.cars,
       });
@@ -38,17 +37,17 @@ class App extends Component {
     });
   };
 
-  deleteCar = (e) => {
+  deleteCar = async (e) => {
     console.log(e.target.id);
-    Axios.delete(`${backendURL}/cars/${e.target.id}`).then((response) => {
+    await Axios.delete(`${backendURL}/cars/${e.target.id}`).then((response) => {
       console.log(response);
       this.getCars();
     });
   };
 
-  changeLastOilMileage = (e) => {
+  changeLastOilMileage = async (e) => {
     e.preventDefault();
-    Axios.put(`${backendURL}/cars/${e.target.carid.value}`, {
+    await Axios.put(`${backendURL}/cars/${e.target.carid.value}`, {
       lastOilChangeMileage: e.target.changeLastOilMileage.value,
     }).then((response) => {
       let tempArray = this.state.cars;
@@ -60,9 +59,9 @@ class App extends Component {
     });
   };
 
-  changeNextOilMileage = (e) => {
+  changeNextOilMileage = async (e) => {
     e.preventDefault();
-    Axios.put(`${backendURL}/cars/${e.target.carid.value}`, {
+    await Axios.put(`${backendURL}/cars/${e.target.carid.value}`, {
       nextOilChangeMileage: e.target.changeNextOilMileage.value,
     }).then((response) => {
       let tempArray = this.state.cars;
@@ -74,9 +73,9 @@ class App extends Component {
     });
   };
 
-  changeLastRotation = (e) => {
+  changeLastRotation = async (e) => {
     e.preventDefault();
-    Axios.put(`${backendURL}/cars/${e.target.carid.value}`, {
+    await Axios.put(`${backendURL}/cars/${e.target.carid.value}`, {
       lastTireRotationMileage: e.target.changeLastRotation.value,
     }).then((response) => {
       let tempArray = this.state.cars;
@@ -88,9 +87,9 @@ class App extends Component {
     });
   };
 
-  changeNextRotation = (e) => {
+  changeNextRotation = async (e) => {
     e.preventDefault();
-    Axios.put(`${backendURL}/cars/${e.target.carid.value}`, {
+    await Axios.put(`${backendURL}/cars/${e.target.carid.value}`, {
       nextTireRotationMileage: e.target.changeNextRotation.value,
     }).then((response) => {
       let tempArray = this.state.cars;

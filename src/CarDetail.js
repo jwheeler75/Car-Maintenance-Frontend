@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+
 class CarDetail extends Component {
   render() {
     const CarDetails = this.props.cars.find((car) => {
@@ -12,7 +13,7 @@ class CarDetail extends Component {
         <h3> {CarDetails.vehicle} </h3>
         <div className="grid-container2">
           <div className="grid">
-            <h5>Last Oil Change Mileage: {CarDetails.lastOilChangeMileage}</h5>
+            <h4>Last Oil Change Mileage: {CarDetails.lastOilChangeMileage}</h4>
             <form onSubmit={this.props.changeLastOilMileage}>
               <input type="hidden" name="carid" value={CarDetails.id} />
               <input type="number" name="changeLastOilMileage" />
@@ -20,7 +21,7 @@ class CarDetail extends Component {
             </form>
           </div>
           <div className="grid">
-            <h5>Next Oil Change Mileage: {CarDetails.nextOilChangeMileage}</h5>
+            <h4>Next Oil Change Mileage: {CarDetails.nextOilChangeMileage}</h4>
             <form onSubmit={this.props.changeNextOilMileage}>
               <input type="hidden" name="carid" value={CarDetails.id} />
               <input type="number" name="changeNextOilMileage" />
@@ -28,9 +29,9 @@ class CarDetail extends Component {
             </form>
           </div>
           <div className="grid">
-            <h5>
+            <h4>
               Last Tire Rotation Mileage: {CarDetails.lastTireRotationMileage}
-            </h5>
+            </h4>
             <form onSubmit={this.props.changeLastRotation}>
               <input type="hidden" name="carid" value={CarDetails.id} />
               <input type="number" name="changeLastRotation" />
@@ -38,9 +39,9 @@ class CarDetail extends Component {
             </form>
           </div>
           <div className="grid">
-            <h5>
+            <h4>
               Next Tire Rotation Mileage: {CarDetails.nextTireRotationMileage}
-            </h5>
+            </h4>
             <form onSubmit={this.props.changeNextRotation}>
               <input type="hidden" name="carid" value={CarDetails.id} />
               <input type="number" name="changeNextRotation" />
