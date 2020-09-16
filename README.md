@@ -1,68 +1,81 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# The Car Maintenance App
 
-## Available Scripts
+## Project Overview
 
-In the project directory, you can run:
 
-### `npm start`
+## Project Description
+This is a full stack Car Maintenance App Frontend is built using a React JS, React Router, React-Dom, React-Router-Dom, and Axios. Flex Box and Flex Grid was used for CSS.  The Backend was created with Node.js, PostgreSQL, Express, and Sequelize.  It has a one to many relationship in the db.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Project Links
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- GitHub Repo URL for Frontend https://github.com/jwheeler75/Car-Maintenance-Frontend
+- GitHub Repo URL for Backend https://github.com/jwheeler75/Car-Maintenance-Backend
+- Heroku Production URL for Frontend
+- Heroku Production URL for Backend
 
-### `npm test`
+## App Screenshot
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+https://github.com/jwheeler75/Car-Maintenance-Frontend/blob/master/planning/App%20Screen%20Shot%20.png
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Wireframes
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+These are the wireframes for the AllCars and CarDetail components.
+https://github.com/jwheeler75/Car-Maintenance-Frontend/blob/master/planning/Wireframe.png
+https://github.com/jwheeler75/Car-Maintenance-Frontend/blob/master/planning/Wireframe%202.png
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## User Stories
+- As a user, I should be able to add a new vehicle.
+- As a user, I should be able to delete a vehicle.
+- As a user, I should have a page that displays all of my vehicles.
+- As a user, I should able to search through a list of all my vehicles and choose a vehicle to view.
+- As a user, I should be able to see the mileage for the last oil change for the vehicle. 
+- As a user, I should be able to see the mileage for the next oil change for the vehicle. 
+- As a user, I should be able to see the mileage for the last tire rotation for the vehicle. 
+- As a user, I should be able to see the mileage for the next tire rotation for the vehicle. 
+- As a user, I should be able to edit the mileage for the last oil change for the vehicle.
+- As a user, I should be able to edit the mileage for the next oil change for the vehicle. 
+- As a user, I should be able to edit the mileage for the last tire rotation for the vehicle. 
+- As a user, I should be able to edit the mileage for the next tire rotation for the vehicle. 
+- As a user, I should be able easily navigate between pages.
+- As a user, I should have a button to return to the homepage.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### MVP/PostMVP
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+ #### MVP
 
-## Learn More
+- Create 2 backend models that are associated in one-to-many relationship for future implementation. 
+- Render data on the frontend with AllCars and CarDetail React components.
+- Allow user to interact with all pages.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### PostMVP
+- Implement user authentication.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Code Snippet
 
-### Analyzing the Bundle Size
+This code allows you to update the last oil change mileage of a vehicle.  Calling the this.getCars() method refreshes the component after state is updated from the tempArray.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+changeLastOilMileage = async (e) => {
+    e.preventDefault();
+    await Axios.put(`${backendURL}/cars/${e.target.carid.value}`, {
+      lastOilChangeMileage: e.target.changeLastOilMileage.value,
+    }).then((response) => {
+      let tempArray = this.state.cars;
+      tempArray.push(response.data.cars);
+      this.setState({
+        cars: tempArray,
+      });
+      this.getCars();
+    });
+  };
 
-### Making a Progressive Web App
+## Issues and Resolutions
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+**ERROR**: Executing (default): DELETE FROM "Cars" WHERE "id" = 'undefined'
+(node:1933) UnhandledPromiseRejectionWarning: SequelizeDatabaseError: invalid input syntax for type integer: "undefined"                          
+**RESOLUTION**: Converted to an ES6 arrow function... fixed scope issue.
