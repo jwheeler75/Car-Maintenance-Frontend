@@ -17,6 +17,8 @@ This is a full stack Car Maintenance App Frontend is built using a React JS, Rea
 
 https://github.com/jwheeler75/Car-Maintenance-Frontend/blob/master/planning/App%20Screen%20Shot%20.png
 
+![](planning/App%20Screen%20Shot%20.png)
+
 
 ## Wireframes
 
