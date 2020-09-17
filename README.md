@@ -25,8 +25,17 @@ https://github.com/jwheeler75/Car-Maintenance-Frontend/blob/master/planning/App%
 These are the wireframes for the AllCars and CarDetail components.
 
 https://github.com/jwheeler75/Car-Maintenance-Frontend/blob/master/planning/Wireframe.png
+![](planning/Wireframe.png)
 
 https://github.com/jwheeler75/Car-Maintenance-Frontend/blob/master/planning/Wireframe%202.png
+![](planning/Wireframe%202.png)
+
+## Database ERD
+
+This is the ERD Diagram for the database.
+
+https://github.com/jwheeler75/Car-Maintenance-Frontend/blob/master/planning/ERD%20Diagram.png
+![](planning/ERD%20Diagram.png)
 
 
 ## User Stories
